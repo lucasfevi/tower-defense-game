@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt_BR">
+<html lang="pt-BR">
 <head>
-	<meta charset="UTF-8">
-	<title>Tower Defense Game</title>
+    <title>Tower Defense Game</title>
+
+    <meta charset="UTF-8">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 
-<canvas id="gameCanvas">
-	Your brownser does not support canvas.
-</canvas>
+<div id="canvas">
 
+    <canvas id="background" width="800" height="600">
+        Seu navegador não suporta canvas. Por favor, tente acessar a página com um navegador diferente.
+    </canvas>
+
+    <canvas id="main" width="800" height="600"></canvas>
+
+</div>
+
+<!-- JS -->
+<script type="text/javascript" src="js/game.js"></script>
+<script type="text/javascript" src="js/animationFrame.js"></script>
 </body>
 </html>
