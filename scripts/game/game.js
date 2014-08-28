@@ -3,11 +3,16 @@ var game = {
     animationFrame: null,
     canvas: null,
     context: null,
+    state: 'loading',
 
     init: function() {
 
-        game.canvas = document.getElementById('main');
-        game.context = game.canvas.getContext('2d');
+        this.canvas = document.getElementById('main');
+        this.context = this.canvas.getContext('2d');
+
+        this.loadState();
+
+        console.log('Initializing the game...');
     },
 
     draw: function() {
@@ -36,4 +41,8 @@ var game = {
     restart: function() {
 
     },
+
+    loadState: function() {
+        
+    }
 }
