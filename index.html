@@ -10,18 +10,23 @@
 </head>
 <body>
 
-<div id="canvas">
+<div id="wrapper">
 
-    <canvas id="background" width="800" height="600">
+    <canvas class="game-layer" id="background" width="800" height="600">
         Seu navegador não suporta canvas. Por favor, tente acessar a página com um navegador diferente.
     </canvas>
 
-    <canvas id="main" width="800" height="600"></canvas>
+    <canvas class="game-layer" id="main" width="800" height="600"></canvas>
+
+    <progress max="100" id="progress-bar" value="0">
+        Progress 0%
+    </progress>
 
 </div>
 
 <!-- JS -->
-<script type="text/javascript" src="js/game.js"></script>
-<script type="text/javascript" src="js/animationFrame.js"></script>
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="scripts/preloadjs-0.4.1.min.js"></script>
+<script type="text/javascript" src="scripts/main.js"></script>
 </body>
 </html>
