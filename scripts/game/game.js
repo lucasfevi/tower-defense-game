@@ -3,22 +3,18 @@ var game = {
     animationFrame: null,
     canvas: null,
     context: null,
-    state: 'loading',
 
     init: function() {
+        console.log('game.init');
 
         this.canvas = document.getElementById('main');
         this.context = this.canvas.getContext('2d');
 
-        this.loadState();
-
         $('.loading-screen').hide();
-
-        console.log('Initializing the game...');
-        game.start();
+        $('.menu-screen').show();
     },
 
-    draw: function() {
+/*    draw: function() {
         console.log('draw');
     },
 
@@ -31,21 +27,21 @@ var game = {
         game.draw();
 
         game.animationFrame = window.requestAnimationFrame(game.animate, game.canvas);
+    }, */
+
+    // Show the options
+    showOptions: function() {
+        console.log('game.showOptions');
     },
 
+    // When the start is called the map needs to be loaded and started
     start: function() {
-        game.animationFrame = window.requestAnimationFrame(game.animate, game.canvas);
+        //game.animationFrame = window.requestAnimationFrame(game.animate, game.canvas);
+        console.log('game.start');
     },
 
+    // Shows the menu screen
     stop: function() {
         window.cancelAnimationFrame(game.animationFrame);
     },
-
-    restart: function() {
-
-    },
-
-    loadState: function() {
-        
-    }
 }

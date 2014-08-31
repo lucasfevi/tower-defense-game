@@ -1,13 +1,12 @@
 var queue = new createjs.LoadQueue();
 
-// queue.installPlugin(createjs.Sound);
-
 queue.on("loadstart", handleStart, this);
 queue.on("progress", handleProgress, this);
 queue.on("complete", handleComplete, this);
 
 queue.loadFile({ id: 'animationFrame', src: 'scripts/game/animationFrame.js' }, false);
 queue.loadFile({ id: 'gameClass',      src: 'scripts/game/game.js' }, false);
+queue.loadFile({ id: 'levelsClass',    src: 'scripts/game/levels.js' }, false);
 
 queue.loadFile({ id: 'big',            src: 'images/big.jpg' }, false);
 queue.loadFile({ id: 'background',     src: 'images/background.png' }, false);
@@ -30,4 +29,7 @@ function handleProgress(event) {
 function handleComplete() {
   console.log('Queue completed');
   game.init();
+
+  $('#btnStart').on('click', game.start);
+  $('#btnOptions').on('click', game.showOptions);
 }
