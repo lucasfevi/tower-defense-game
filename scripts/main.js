@@ -20,7 +20,7 @@ function handleStart() {
 }
 
 function handleProgress(event) {
-  var progress = parseInt(event.progress * 100);
+  var progress = (event.progress * 100).toFixed(2);
 
   $('#progressValue').html(progress);
   $('#progressBar').val(progress);
