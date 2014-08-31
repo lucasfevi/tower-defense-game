@@ -12,7 +12,10 @@ var game = {
 
         this.loadState();
 
+        $('.loading-screen').hide();
+
         console.log('Initializing the game...');
+        game.start();
     },
 
     draw: function() {
