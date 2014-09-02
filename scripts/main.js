@@ -8,6 +8,9 @@ queue.loadFile({ id: 'animationFrame', src: 'scripts/game/animationFrame.js' }, 
 queue.loadFile({ id: 'gameClass',      src: 'scripts/game/game.js' }, false);
 queue.loadFile({ id: 'levelsClass',    src: 'scripts/game/levels.js' }, false);
 
+queue.loadFile({ id: 'mapsJson',       src: 'data/maps.json' }, false);
+queue.loadFile({ id: 'enemiesJson',    src: 'data/enemies.json' }, false);
+
 queue.loadFile({ id: 'big',            src: 'images/big.jpg' }, false);
 queue.loadFile({ id: 'background',     src: 'images/background.png' }, false);
 queue.loadFile({ id: 'enemies',        src: 'images/enemies.png' }, false);
@@ -28,8 +31,13 @@ function handleProgress(event) {
 
 function handleComplete() {
   console.log('Queue completed');
-  game.init();
 
   $('#btnStart').on('click', game.start);
   $('#btnOptions').on('click', game.showOptions);
+
+  // JSON Files
+  levels.data.maps = queue.getResult('mapsJson');
+  levels.data.enemies = queue.getResult('enemiesJson');
+
+  game.init();
 }

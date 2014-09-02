@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Map Level 1",
+    "waves":
+    [
+      {
+        "enemies":
+        [
+          {
+            "type": 0
+          },
+          {
+            "type": 0
+          },
+          {
+            "type": 0
+          },
+          {
+            "type": 0
+          },
+          {
+            "type": 0
+          }
+        ]
+      },
+      {
+        "enemies":
+        [
+          {
+            "type": 0
+          },
+          {
+            "type": 0
+          },
+          {
+            "type": 0
+          },
+          {
+            "type": 0
+          },
+          {
+            "type": 0
+          },
+          {
+            "type": 1
+          },
+          {
+            "type": 1
+          },
+          {
+            "type": 1
+          }
+        ]
+      }
+    ]
+  }
+]
