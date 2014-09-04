@@ -12,14 +12,19 @@
 
 <div id="wrapper">
 
-    <canvas class="game-layer" id="background" width="800" height="600"></canvas>
+    <div class="main-screen">
 
-    <canvas class="game-layer" id="main" width="800" height="600"></canvas>
+        <div id="canvas"></div>
+
+        <div class="progress">
+            <p>Loading...</p>
+            <p id="progressValue"><span>0</span> %</p>
+            <progress max="100" id="progressBar" value="0"></progress>
+        </div>
+
+    </div>
 
     <div class="menu-screen game-layer">
-
-        <!-- bg menu screen -->
-        <!-- buttons -->
 
         <button type="button" class="btn-menu" id="btnStart">Start</button>
         <button type="button" class="btn-menu" id="btnOptions">Options</button>
@@ -28,26 +33,13 @@
 
     <div class="options-screen game-layer">
 
-        <!-- options -->
-
-    </div>
-
-    <div class="loading-screen">
-
-        <div class="progress">
-
-            <p><span id="progressValue">0</span> %</p>
-            <progress max="100" id="progressBar" value="0"></progress>
-
-        </div>
-
     </div>
 
 </div>
 
 <!-- JS -->
-<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="scripts/preloadjs-0.4.1.min.js"></script>
-<script type="text/javascript" src="scripts/main.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/phaser.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
