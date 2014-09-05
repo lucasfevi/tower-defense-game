@@ -9,10 +9,6 @@ function preload() {
   game.load.onLoadComplete.add(loadComplete, this);
   game.load.onFileComplete.add(fileComplete, this);
 
-  game.load.image('big', 'assets/big.jpg');
-  game.load.image('enemies', 'assets/enemies.png');
-  game.load.image('background', 'assets/background.png');
-
   hud = new HUD(game);
   hud.preload();
 
