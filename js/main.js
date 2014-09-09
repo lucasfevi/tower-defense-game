@@ -2,22 +2,23 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'canvas', { preload: preload, 
 
 function preload() {
 
-  game.stage.backgroundColor = '#5aac7b';
+    game.stage.backgroundColor = '#5aac7b';
 
-  // Listening these events from Phaser.Loader
-  game.load.onLoadStart.add(loadStart, this);
-  game.load.onLoadComplete.add(loadComplete, this);
-  game.load.onFileComplete.add(fileComplete, this);
+    // Listening these events from Phaser.Loader
+    game.load.onLoadStart.add(loadStart, this);
+    game.load.onLoadComplete.add(loadComplete, this);
+    game.load.onFileComplete.add(fileComplete, this);
 
-  hud = new HUD(game);
-  hud.preload();
+    hud = new HUD(game);
+    hud.preload();
 
+    levels = new Levels(game);
+    levels.preload();
 }
 
 function create() {
 
-  hud.create();
-
+    hud.create();
 }
 
 function update() {
@@ -35,13 +36,13 @@ function loadStart() {
 
 function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
 
-  $('#progressValue span').html(progress);
-  $('#progressBar').val(progress);
-
+    $('#progressValue span').html(progress);
+    $('#progressBar').val(progress);
 }
 
 function loadComplete() {
 
-  $('.progress').hide();
+    $('.progress').hide();
 
+    hud.showMenu();
 }
