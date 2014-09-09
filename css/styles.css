@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Kenvector Future';
+  src: url('fonts/kenvector_future.ttf');
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -7,7 +12,6 @@ canvas, #canvas {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
   background: transparent;
 }
 
@@ -39,16 +43,13 @@ canvas, #canvas {
     position: absolute;
     left: 250px;
     bottom: 40px;
+    z-index: 5;
   }
 
     .main-screen .progress p {
-      font: bold 14px/30px Verdana;
+      font: bold 14px/30px 'Kenvector Future';
       text-align: center;
       color: #e9e9e9;
-    }
-
-    .main-screen .progress #progressValue {
-      z-index: 999;
     }
 
 progress[value] {
@@ -70,40 +71,6 @@ progress[value] {
   }
 
   progress[value]::-webkit-progress-value {
-    border-radius: 3px;
     background: #84B154;
+    border-radius: 3px;
   }
-
-/* Menu Screen */
-.menu-screen {
-
-}
-
-  .menu-screen #btnStart {
-    bottom: 100px;
-    left: 325px;
-  }
-
-  .menu-screen #btnOptions {
-    bottom: 40px;
-    left: 325px;
-  }
-
-/* Buttons */
-.btn-menu {
-  font: 24px/28px Verdana;
-  color: #e9e9e9;
-  width: 150px;
-  height: 50px;
-  border: 4px solid #424242;
-  border-radius: 5px;
-  background: #4bc1dd;
-  outline: none;
-  cursor: pointer;
-  opacity: 0.6;
-  position: absolute;
-}
-
-.btn-menu:hover {
-  opacity: 1;
-}
