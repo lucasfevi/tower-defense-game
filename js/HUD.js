@@ -2,16 +2,13 @@ HUD = function(game) {
 
     this.game = game;
     this.btnStart = null;
-
 };
 
 HUD.prototype = {
 
     preload: function() {
 
-        this.game.load.atlasXML('space', 'assets/sprites/uipackSpace_sheet.png', 'assets/sprites/uipackSpace_sheet.xml');
         this.game.load.image('btnStart', 'assets/btnStart.png');
-
     },
 
     create: function() {
@@ -24,7 +21,6 @@ HUD.prototype = {
     showMenu: function() {
 
         this.btnStart.visible = true;
-
     },
 
     handleStart: function() {
@@ -32,6 +28,5 @@ HUD.prototype = {
         this.btnStart.visible = false;
 
         levels.start();
-
     }
 };
