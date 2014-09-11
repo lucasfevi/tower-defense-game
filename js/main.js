@@ -19,6 +19,8 @@ function preload() {
 function create() {
 
     hud.create();
+
+    levels.create();
 }
 
 function update() {
@@ -32,6 +34,7 @@ function render() {
 // Loader callbacks
 function loadStart() {
 
+    $('.progress').show();
 }
 
 function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
