@@ -2,17 +2,17 @@ Levels = function(game) {
 
     this.game = game;
     this.map = null;
-    this.blocked = true; // it will be block until the path is calculated (may use a different way to fix it)
 
     this.path = null;
     this.pathfinder = null;
 
-    this.enemies = new Phaser.ArrayList();
-
     this.btnNextWave = null;
     this.currentWave = null;
 
-    this.repeatTimer = null;
+    this.mapsData = null;
+    this.enemiesData = null;
+
+    this.enemies = new Phaser.ArrayList();
 };
 
 Levels.prototype = {
@@ -70,24 +70,30 @@ Levels.prototype = {
         this.pathfinder.calculatePath();
 
         this.btnNextWave = this.game.add.button(600, 520, 'btnNextWave', this.nextWave, this);
+
+        this.mapsData = this.game.cache.getJSON('mapsData');
+        this.enemiesData = this.game.cache.getJSON('enemiesData');
     },
 
     nextWave: function() {
 
-        var mapsData = this.game.cache.getJSON('mapsData');
-        var wave = mapsData[0].waves[0];
+        this.level = 0;
+        this.currentWave = 2;
+        var wave = this.mapsData[this.level].waves[this.currentWave - 1];
 
         // if (this.currentWave === null) {}
         // this.enemies.reset();
 
         this.enemyIndex = 0;
 
-        this.repeatTimer = this.game.time.events.repeat(Phaser.Timer.SECOND * 1.5, wave.enemies.length, this.addEnemy, this, wave.enemies);
+        this.game.time.events.repeat(Phaser.Timer.SECOND * 1.5, wave.enemies.length, this.addEnemy, this, wave.enemies);
     },
 
     addEnemy: function(enemies) {
 
-        this.enemies.add(new Enemy(this.game, enemies[this.enemyIndex].type, this.path));
+        var type = enemies[this.enemyIndex].type;
+
+        this.enemies.add(new Enemy(this.game, this.path, this.enemiesData[type]));
         this.enemyIndex++;
     }
 
