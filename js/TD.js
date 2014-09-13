@@ -19,8 +19,6 @@ function preload() {
 function create() {
 
     hud.create();
-
-    levels.create();
 }
 
 function update() {
