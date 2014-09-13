@@ -43,4 +43,12 @@ Enemy.prototype.setTween = function() {
     this.tween.to({ x: this.path[this.path.length - 1].x * 32, y: this.path[this.path.length - 1].y * 32 - 30 }, duration, Phaser.Easing.Linear.None);
 
     this.tween.start();
-}
+
+    this.tween._lastChild.onComplete.add(this.handleTweenComplete, this);
+};
+
+// It will mean that the enemy reaches the final path, so you lose a life
+Enemy.prototype.handleTweenComplete = function() {
+
+    this.kill();
+};
