@@ -8,8 +8,6 @@ Levels = function(game) {
     this.pathfinder = null;
 
     this.enemies = new Phaser.ArrayList();
-    this.startPoint = { x: 8 * 32, y: 0 * 32 };
-    this.goalPoint = { x: 16 * 32, y: 0 * 32 };
 
     this.btnNextWave = null;
 };
@@ -44,32 +42,34 @@ Levels.prototype = {
 
     start: function() {
 
-        this.btnNextWave = this.game.add.button(600, 520, 'btnNextWave', this.nextWave, this);
-
         this.map = this.game.add.tilemap('map');
         this.map.addTilesetImage('RPGPackSheet');
 
-        this.mapLayer = this.map.createLayer('LayerName');
+        // Need to eval this because is coming between "" from the json Tiled created
+        var start = eval(this.map.properties.start);
+        var goal = eval(this.map.properties.goal);
+        var walkables = eval(this.map.properties.walkables);
 
-        var start = this.mapLayer.getTileXY(this.startPoint.x, this.startPoint.y, {});
-        var goal = this.mapLayer.getTileXY(this.goalPoint.x, this.goalPoint.y, {});
+        this.mapLayer = this.map.createLayer(this.map.properties.layerName);
 
         this.pathfinder = this.game.plugins.add(Phaser.Plugin.PathFinderPlugin);
-        this.pathfinder.setGrid(this.map.layers[0].data, [52]);
+        this.pathfinder.setGrid(this.map.layers[this.map.properties.layerIndex].data, walkables);
 
         var dis = this; // little hack until a find a better way
         this.pathfinder.setCallbackFunction(function(path) {
             dis.path = path || [];
         });
 
-        this.pathfinder.preparePathCalculation([start.x, start.y], [goal.x, goal.y]);
+        this.pathfinder.preparePathCalculation([start[0], start[1]], [goal[0], goal[1]]);
         this.pathfinder.calculatePath();
+
+        this.btnNextWave = this.game.add.button(600, 520, 'btnNextWave', this.nextWave, this);
     },
 
     nextWave: function() {
 
-        this.enemies.reset();
-        this.enemies.add(new Enemy(game, 1, this.startPoint.x, this.startPoint.y, this.path, this.mapLayer));
+        // this.enemies.reset();
+        this.enemies.add(new Enemy(game, 1, this.path));
     }
 
 };

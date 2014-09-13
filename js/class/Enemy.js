@@ -1,9 +1,8 @@
-Enemy = function(game, type, startX, startY, path) {
+Enemy = function(game, type, path) {
 
     this.game = game;
     this.type = type;
     this.path = path;
-    this.startPoint = { x: startX, y: startY };
 
     this.config();
 };
@@ -17,7 +16,7 @@ Enemy.prototype.config = function() {
 
     // Don't add it to the game here???
     // Also, fix the -30 hack on the y position later
-    this.sprite = this.game.add.sprite(this.startPoint.x, this.startPoint.y - 30, 'Enemies');
+    this.sprite = this.game.add.sprite(this.path[0].x * 32, this.path[0].y * 32 - 30, 'Enemies');
 
     // Properties based the type
     this.speed = 60; // will change accordingly to the type
