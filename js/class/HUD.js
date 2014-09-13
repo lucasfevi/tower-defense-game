@@ -13,7 +13,8 @@ HUD.prototype = {
 
     create: function() {
 
-        this.btnStart = this.game.add.button(300, 420, 'btnStart', this.handleStart, this);
+        this.btnStart = this.game.add.button(this.game.world.centerX, 470, 'btnStart', this.handleStart, this);
+        this.btnStart.anchor.setTo(0.5, 0.5);
         this.btnStart.visible = false;
         this.btnStart.exists = false;
     },
