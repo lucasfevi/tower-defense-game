@@ -10,11 +10,17 @@ Levels = function(game) {
     this.enemies = new Phaser.ArrayList();
 
     this.btnNextWave = null;
+    this.currentWave = null;
+
+    this.repeatTimer = null;
 };
 
 Levels.prototype = {
 
     preload: function() {
+
+        this.game.load.json('mapsData', 'data/maps.json');
+        this.game.load.json('enemiesData', 'data/enemies.json');
 
         this.game.load.tilemap('map', 'assets/tilemap.json', null, Phaser.Tilemap.TILED_JSON);
 
@@ -68,8 +74,21 @@ Levels.prototype = {
 
     nextWave: function() {
 
+        var mapsData = this.game.cache.getJSON('mapsData');
+        var wave = mapsData[0].waves[0];
+
+        // if (this.currentWave === null) {}
         // this.enemies.reset();
-        this.enemies.add(new Enemy(game, 1, this.path));
+
+        this.enemyIndex = 0;
+
+        this.repeatTimer = this.game.time.events.repeat(Phaser.Timer.SECOND * 1.5, wave.enemies.length, this.addEnemy, this, wave.enemies);
+    },
+
+    addEnemy: function(enemies) {
+
+        this.enemies.add(new Enemy(this.game, enemies[this.enemyIndex].type, this.path));
+        this.enemyIndex++;
     }
 
 };
