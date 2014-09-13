@@ -25,6 +25,7 @@ function create() {
 
 function update() {
 
+    levels.update();
 }
 
 function render() {
