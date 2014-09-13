@@ -3,6 +3,7 @@
     "name": "Map Level 1",
     "waves":
     [
+      {},
       {
         "enemies":
         [
